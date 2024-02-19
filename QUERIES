@@ -18,12 +18,12 @@ Dbms lab
 
 4a.SELECT DISTINCT SID FROM SHIPMENT C,PART P WHERE (SELECT PID FROM SHIPMENT WHERE P.PID=C.PID AND P.COLOR LIKE "GREEN")
 4B.SELECT S.Sname, COUNT(*) as PartCount
- FROM SUPPLIER S, SHIPMENT C, PART P
- WHERE C.Sid = S.Sid and P.PID = C.PID
- GROUP BY S.Sname, S.Sid 
+   FROM SUPPLIER S, SHIPMENT C, PART P
+   WHERE C.Sid = S.Sid and P.PID = C.PID
+   GROUP BY S.Sname, S.Sid 
 4C.UPDATE PART
- SET Color='Yellow'
- WHERE PID IN (SELECT C.PID FROM SUPPLIER S, SHIPMENT C WHERE      C.Sid=S.Sid and C.Sid=3); 
+   SET Color='Yellow'
+   WHERE PID IN (SELECT C.PID FROM SUPPLIER S, SHIPMENT C WHERE      C.Sid=S.Sid and C.Sid=3); 
 
 —------------------------------------------------------------------------------------------------------------------------
 5a.select distinct ename from employees E,aircraft A, certified C where(E.eid=C.eid and C.aid="B001")
@@ -36,3 +36,7 @@ Dbms lab
 6A.SELECT DNAME,AVG(SALARY) FROM DEPARTMENT D,EMPLOYEE15 WHERE D.DNAME="tech-Development"
 
 6B.SELECT DISTINCT FNAME,LNAME FROM EMPLOYEE15 E,DEPENDENT D WHERE E.SSN=D.ESSN
+
+6C. SELECT *
+    FROM DEPARTMENT
+    WHERE EXISTS(SUBSTRING('tech',1) AS ExtractString);
