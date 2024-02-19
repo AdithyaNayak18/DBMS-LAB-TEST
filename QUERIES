@@ -1,0 +1,38 @@
+Dbms lab 
+
+1A.select sname from soilr s, res r where s.sid=r.rsid
+1B.select rsid from boat,res where rbid=bid and clr="block" or clr="blue";
+1C.select sid from soilr,res where sid not in(select rsid from res);
+—------------------------------------------------------------------------------------------------------------------------
+2A.select DISTINCT salary from EMPLOYEE E, DEPARTMENT D WHERE SALARY>(SELECT SALARY FROM EMPLOYEE E,DEPARTMENT D WHERE DNUMBER=5 AND D.MGR_SSN=E.SSN)
+
+2B.SELECT DISTINCT ESSN FROM WORKS_ON W,PROJECT P WHERE (W.PNO=1 OR W.PNO=2 OR W.PNO=3)
+
+2C.SELECT ESSN,SUM(HOURS) FROM WORKS_ON GROUP BY PNO
+—------------------------------------------------------------------------------------------------------------------------
+3a.select eid from employees where salary =(select max(salary) from employees)
+3b.select distinct aname from aircraft a,certified c, employees e where (e.eid=c.eid and e.salary>50000)
+3c.SELECT  
+
+—-------------------------------------------------------------------------------------------------------------
+
+4a.SELECT DISTINCT SID FROM SHIPMENT C,PART P WHERE (SELECT PID FROM SHIPMENT WHERE P.PID=C.PID AND P.COLOR LIKE "GREEN")
+4B.SELECT S.Sname, COUNT(*) as PartCount
+ FROM SUPPLIER S, SHIPMENT C, PART P
+ WHERE C.Sid = S.Sid and P.PID = C.PID
+ GROUP BY S.Sname, S.Sid 
+4C.UPDATE PART
+ SET Color='Yellow'
+ WHERE PID IN (SELECT C.PID FROM SUPPLIER S, SHIPMENT C WHERE      C.Sid=S.Sid and C.Sid=3); 
+
+—------------------------------------------------------------------------------------------------------------------------
+5a.select distinct ename from employees E,aircraft A, certified C where(E.eid=C.eid and C.aid="B001")
+
+5b.select * from aircraft order by crange asc
+
+5C.select distinct(ename) from employees E,certified C, aircraft A where A.crange > 3000 and C.aid NOT in(select aid from aircraft A where A.aname='Boeing') and E.eid = C.eid
+
+—------------------------------------------------------------------------------------------------------------------------
+6A.SELECT DNAME,AVG(SALARY) FROM DEPARTMENT D,EMPLOYEE15 WHERE D.DNAME="tech-Development"
+
+6B.SELECT DISTINCT FNAME,LNAME FROM EMPLOYEE15 E,DEPENDENT D WHERE E.SSN=D.ESSN
